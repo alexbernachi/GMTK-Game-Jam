@@ -1,15 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://lflorxq7pyns"]
+[gd_scene load_steps=5 format=3 uid="uid://lflorxq7pyns"]
 
 [ext_resource type="Script" path="res://scene/proto.gd" id="1_8hhvu"]
 [ext_resource type="Texture2D" uid="uid://1prkiuwclydx" path="res://icon.svg" id="1_cwai1"]
 [ext_resource type="Script" path="res://scene/player.gd" id="1_koyvy"]
-[ext_resource type="Script" path="res://scene/scissor.gd" id="4_06sdw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85vg7"]
 size = Vector2(128, 128)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xr3i1"]
-size = Vector2(130, 36)
 
 [node name="Proto" type="Node2D"]
 script = ExtResource("1_8hhvu")
@@ -39,22 +35,8 @@ offset_right = 495.0
 offset_bottom = 32.0
 text = "Score: "
 
-[node name="Scissor" type="Area2D" parent="."]
-position = Vector2(113, 340)
-rotation = 3.14159
-script = ExtResource("4_06sdw")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Scissor"]
-shape = SubResource("RectangleShape2D_xr3i1")
-
-[node name="Icon" type="Sprite2D" parent="Scissor"]
-rotation = -3.14159
-scale = Vector2(1.016, 0.31)
-texture = ExtResource("1_cwai1")
-
 [node name="SpawnerTimer" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
 
 [connection signal="Point" from="Player" to="." method="_on_player_point"]
-[connection signal="body_entered" from="Scissor" to="Scissor" method="_on_body_entered"]

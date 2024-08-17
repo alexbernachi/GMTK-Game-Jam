@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjfntw51oa6tq"]
+
+[ext_resource type="Script" path="res://scene/scissor.gd" id="1_r3pml"]
+[ext_resource type="Texture2D" uid="uid://1prkiuwclydx" path="res://icon.svg" id="2_hkvhs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xr3i1"]
+size = Vector2(130, 36)
+
+[node name="Scissor" type="Area2D"]
+rotation = 3.14159
+script = ExtResource("1_r3pml")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xr3i1")
+
+[node name="Icon" type="Sprite2D" parent="."]
+rotation = -3.14159
+scale = Vector2(1.016, 0.31)
+texture = ExtResource("2_hkvhs")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+scale = Vector2(6.42378, 1.96703)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
