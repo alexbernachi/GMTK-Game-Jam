@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://lflorxq7pyns"]
+[gd_scene load_steps=6 format=3 uid="uid://lflorxq7pyns"]
 
 [ext_resource type="Script" path="res://scene/proto.gd" id="1_8hhvu"]
 [ext_resource type="Texture2D" uid="uid://1prkiuwclydx" path="res://icon.svg" id="1_cwai1"]
 [ext_resource type="Script" path="res://scene/player.gd" id="1_koyvy"]
+[ext_resource type="PackedScene" uid="uid://do5wrqquhuc62" path="res://bowl.tscn" id="4_jhg8i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85vg7"]
 size = Vector2(128, 128)
@@ -13,6 +14,7 @@ script = ExtResource("1_8hhvu")
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(614.5, 164.5)
 rotation = -3.14159
+collision_mask = 6
 script = ExtResource("1_koyvy")
 
 [node name="Icon" type="Sprite2D" parent="Player"]
@@ -36,7 +38,7 @@ offset_bottom = 32.0
 text = "Score: "
 
 [node name="SpawnerTimer" type="Timer" parent="."]
-wait_time = 0.5
 one_shot = true
 
-[connection signal="Point" from="Player" to="." method="_on_player_point"]
+[node name="Bowl" parent="." instance=ExtResource("4_jhg8i")]
+position = Vector2(609, 598)

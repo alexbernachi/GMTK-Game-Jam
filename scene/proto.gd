@@ -29,8 +29,7 @@ func _on_player_point(value):
 
 func Spawner():
 	var Instant = Scissors.instantiate()
-	
-	Instant.position =  Vector2(0, randf_range(300, 600))
+	Instant.position =  Vector2(0, randf_range(400, 600))
 	add_child(Instant)
 	spawner_timer.start()
 	pass
