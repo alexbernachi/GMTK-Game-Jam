@@ -1,44 +1,55 @@
-[gd_scene load_steps=6 format=3 uid="uid://lflorxq7pyns"]
+[gd_scene load_steps=7 format=3 uid="uid://lflorxq7pyns"]
 
 [ext_resource type="Script" path="res://scene/proto.gd" id="1_8hhvu"]
-[ext_resource type="Texture2D" uid="uid://1prkiuwclydx" path="res://icon.svg" id="1_cwai1"]
-[ext_resource type="Script" path="res://scene/player.gd" id="1_koyvy"]
+[ext_resource type="PackedScene" uid="uid://c1hpkvp1c7ap2" path="res://scene/player.tscn" id="2_0lkpj"]
+[ext_resource type="FontFile" uid="uid://cc1j7bh6n0ryh" path="res://Asset/Sniglet.otf" id="4_1qipr"]
 [ext_resource type="PackedScene" uid="uid://do5wrqquhuc62" path="res://bowl.tscn" id="4_jhg8i"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_85vg7"]
-size = Vector2(128, 128)
+[ext_resource type="AudioStream" uid="uid://cwjco6b7n06v8" path="res://Asset/Sound/punch-3.mp3" id="5_i6oqy"]
+[ext_resource type="PackedScene" uid="uid://dl701op4pqihl" path="res://scene/game_over.tscn" id="6_58dhj"]
 
 [node name="Proto" type="Node2D"]
 script = ExtResource("1_8hhvu")
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(614.5, 164.5)
-rotation = -3.14159
-collision_mask = 6
-script = ExtResource("1_koyvy")
-
-[node name="Icon" type="Sprite2D" parent="Player"]
-texture = ExtResource("1_cwai1")
-offset = Vector2(0, -64.125)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(0, -64)
-shape = SubResource("RectangleShape2D_85vg7")
-
-[node name="Icon2" type="Sprite2D" parent="."]
-position = Vector2(617.5, 151.5)
-scale = Vector2(2.57031, 0.335938)
-texture = ExtResource("1_cwai1")
-
-[node name="Label" type="Label" parent="."]
-offset_left = 443.0
-offset_top = 9.0
-offset_right = 495.0
-offset_bottom = 32.0
-text = "Score: "
+[node name="Player" parent="." instance=ExtResource("2_0lkpj")]
+position = Vector2(614.5, 4)
+scale = Vector2(0.54, 0.54)
 
 [node name="SpawnerTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="Bowl" parent="." instance=ExtResource("4_jhg8i")]
-position = Vector2(609, 598)
+position = Vector2(609, 661)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -187.0
+offset_right = 187.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_1qipr")
+theme_override_font_sizes/font_size = 100
+text = "Score: "
+horizontal_alignment = 1
+
+[node name="Game Over" parent="Control" instance=ExtResource("6_58dhj")]
+visible = false
+layout_mode = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_i6oqy")
+pitch_scale = 0.61
+attenuation = 0.0490366

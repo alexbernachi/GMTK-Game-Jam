@@ -1,0 +1,113 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfel643c2fflx"]
+
+[ext_resource type="Texture2D" uid="uid://c5e5ui3ce6cmb" path="res://Asset/SVG/Cat Food 1.svg" id="1_axh4a"]
+[ext_resource type="Script" path="res://scene/title_screen.gd" id="1_bn027"]
+[ext_resource type="Texture2D" uid="uid://jr1adengeyk5" path="res://Asset/SVG/Cat Food 2.svg" id="2_esioi"]
+[ext_resource type="Texture2D" uid="uid://1rarfdrq4d3h" path="res://Asset/SVG/Cat Food 3.svg" id="3_m3bsq"]
+[ext_resource type="Texture2D" uid="uid://bubtc7d66toy0" path="res://Asset/SVG/Cat Food 4.svg" id="4_swbbm"]
+[ext_resource type="FontFile" uid="uid://cc1j7bh6n0ryh" path="res://Asset/Sniglet.otf" id="5_wxrbn"]
+[ext_resource type="AudioStream" uid="uid://dttlbqj44es0f" path="res://Asset/Sound/cat-call-meow 2.mp3" id="7_5omrp"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bn027")
+
+[node name="Particle Holder" type="Node2D" parent="."]
+position = Vector2(661, -160)
+metadata/_edit_group_ = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Particle Holder"]
+amount = 4
+lifetime = 1.5
+randomness = 0.47
+fixed_fps = 60
+texture = ExtResource("1_axh4a")
+emission_shape = 3
+emission_rect_extents = Vector2(600.96, 1)
+angular_velocity_max = 289.45
+damping_max = 31.156
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="Particle Holder"]
+amount = 4
+lifetime = 1.5
+fixed_fps = 60
+texture = ExtResource("2_esioi")
+emission_shape = 3
+emission_rect_extents = Vector2(600.96, 1)
+angular_velocity_max = 289.45
+damping_max = 31.156
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="Particle Holder"]
+amount = 4
+lifetime = 1.5
+fixed_fps = 60
+texture = ExtResource("3_m3bsq")
+emission_shape = 3
+emission_rect_extents = Vector2(600.96, 1)
+angular_velocity_max = 289.45
+damping_max = 31.156
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="Particle Holder"]
+amount = 4
+lifetime = 1.5
+fixed_fps = 60
+texture = ExtResource("4_swbbm")
+emission_shape = 3
+emission_rect_extents = Vector2(600.96, 1)
+angular_velocity_max = 289.45
+damping_max = 31.156
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -254.0
+offset_right = 254.0
+offset_bottom = 203.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("5_wxrbn")
+theme_override_font_sizes/font_size = 100
+text = "
+Cat Food
+Nab"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = -197.0
+offset_right = 136.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_wxrbn")
+theme_override_font_sizes/font_size = 50
+text = "Meow"
+
+[node name="Credit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_wxrbn")
+theme_override_font_sizes/font_size = 50
+text = "Credit"
+
+[node name="Cat_SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_5omrp")
+pitch_scale = 1.01
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credit" to="." method="_on_credit_pressed"]

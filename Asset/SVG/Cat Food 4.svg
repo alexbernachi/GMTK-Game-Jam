@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="37.896912mm"
+   height="37.12487mm"
+   viewBox="0 0 37.896912 37.12487"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="GMTK Challange.svg"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.1893044"
+     inkscape:cx="512.48444"
+     inkscape:cy="717.64638"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-164.29178,-49.080725)">
+    <path
+       id="path5581"
+       style="fill:#df426e;fill-opacity:1;stroke-width:0.245"
+       d="M 183.23998,49.080725 A 18.948303,18.5625 0 0 0 164.29178,67.6429 18.948303,18.5625 0 0 0 183.23998,86.205591 18.948303,18.5625 0 0 0 202.18869,67.6429 18.948303,18.5625 0 0 0 183.23998,49.080725 Z m 0,10.807092 a 7.9162521,7.7550707 0 0 1 7.91631,7.755083 7.9162521,7.7550707 0 0 1 -7.91631,7.755082 7.9162521,7.7550707 0 0 1 -7.9158,-7.755082 7.9162521,7.7550707 0 0 1 7.9158,-7.755083 z" />
+  </g>
+</svg>

@@ -1,28 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjfntw51oa6tq"]
+[gd_scene load_steps=8 format=3 uid="uid://bjfntw51oa6tq"]
 
 [ext_resource type="Script" path="res://scene/scissor.gd" id="1_r3pml"]
-[ext_resource type="Texture2D" uid="uid://1prkiuwclydx" path="res://icon.svg" id="2_hkvhs"]
+[ext_resource type="Texture2D" uid="uid://c5e5ui3ce6cmb" path="res://Asset/SVG/Cat Food 1.svg" id="2_6perw"]
+[ext_resource type="Texture2D" uid="uid://jr1adengeyk5" path="res://Asset/SVG/Cat Food 2.svg" id="3_y5l80"]
+[ext_resource type="Texture2D" uid="uid://1rarfdrq4d3h" path="res://Asset/SVG/Cat Food 3.svg" id="4_b4fje"]
+[ext_resource type="Texture2D" uid="uid://bubtc7d66toy0" path="res://Asset/SVG/Cat Food 4.svg" id="5_5ritl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqukr"]
-size = Vector2(130, 40)
+size = Vector2(44, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_thtr1"]
-size = Vector2(20, 54)
+size = Vector2(20, 40)
 
 [node name="Scissor" type="CharacterBody2D"]
+z_index = -1
 rotation = 3.14159
+scale = Vector2(1.5, 1.5)
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_r3pml")
 metadata/_edit_group_ = true
-
-[node name="Icon" type="Sprite2D" parent="."]
-rotation = -3.14159
-scale = Vector2(1.016, 0.31)
-texture = ExtResource("2_hkvhs")
-
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-scale = Vector2(6.42378, 1.96703)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fqukr")
@@ -31,7 +28,29 @@ shape = SubResource("RectangleShape2D_fqukr")
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 17)
+position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_thtr1")
 
+[node name="CatFood1" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.360001, 0.360001)
+texture = ExtResource("2_6perw")
+
+[node name="CatFood2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 7.06)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_y5l80")
+
+[node name="CatFood3" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.38, 0.38)
+texture = ExtResource("4_b4fje")
+
+[node name="CatFood4" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.305, 0.305)
+texture = ExtResource("5_5ritl")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

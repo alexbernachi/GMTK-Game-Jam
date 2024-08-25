@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dsnnfnlkqrstu"
+path="res://.godot/imported/catmeow 2.mp3-76f52273615a76a887ae3fc7ea5d0bf3.mp3str"
+
+[deps]
+
+source_file="res://Asset/Sound/catmeow 2.mp3"
+dest_files=["res://.godot/imported/catmeow 2.mp3-76f52273615a76a887ae3fc7ea5d0bf3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

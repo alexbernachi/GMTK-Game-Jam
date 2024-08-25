@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm48f0vu0y271"]
+
+[ext_resource type="AudioStream" uid="uid://b5rsvpvjotqnv" path="res://Asset/Music/ordinary-loop-minimal-piano.mp3" id="1_wuncj"]
+
+[node name="Background Music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_wuncj")
+autoplay = true

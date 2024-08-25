@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1hpkvp1c7ap2"]
+
+[ext_resource type="Script" path="res://scene/player.gd" id="1_270p3"]
+[ext_resource type="Texture2D" uid="uid://c815cm0lmy3s6" path="res://Asset/SVG/Kitty.svg" id="2_dl1jl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85vg7"]
+size = Vector2(329, 1050.25)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(614.5, 164.5)
+rotation = -3.14159
+collision_mask = 6
+script = ExtResource("1_270p3")
+speed = 25.0
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(0, -9.44941)
+scale = Vector2(1, 1.142)
+texture = ExtResource("2_dl1jl")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(0, 0, 329, 335.398)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.000574675, -374.5)
+texture = ExtResource("2_dl1jl")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(0, 328.37, 329, 349.63)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6.10352e-05, -25.375)
+shape = SubResource("RectangleShape2D_85vg7")

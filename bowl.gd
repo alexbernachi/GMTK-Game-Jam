@@ -1,11 +1,19 @@
 extends Area2D
 
-signal Point(value)
+@onready var Munch_SFX: AudioStreamPlayer2D = $MunchSFX
 
 var points: int = 1
-var Totals: float = 0
+
+var Hit_Cucumber: bool = false
+
 
 func _on_body_entered(body: Node2D) -> void:
-	Totals += points
-	Point.emit(Totals)
-	body.queue_free()
+	if body.name == "Cucumber":
+		GameManager.emit_signal("Lose")
+		Hit_Cucumber = true
+		return
+	else: 
+		GameManager.emit_signal("Points", points)
+		Munch_SFX.pitch_scale = randf_range(0.80, 1.24)
+		Munch_SFX.play()
+		body.queue_free()
