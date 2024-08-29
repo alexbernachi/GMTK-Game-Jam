@@ -16,8 +16,10 @@ var X_side: int
 
 var Totals: float = 0
 
+#get the game ready
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#Connect to signal
 	GameManager.connect("Points", Update_Score)
 	GameManager.connect("Lose", Show_Game_Over)
 	X_side = 1
@@ -28,6 +30,7 @@ func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+#when spawn, it choose which side and spawn them
 func _process(_delta):
 	if spawner_timer.is_stopped():
 		Side_Spawner()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dl701op4pqihl"]
 
+[ext_resource type="Theme" uid="uid://dkkmstnd7ws1s" path="res://First Theme.tres" id="1_3r20u"]
 [ext_resource type="Script" path="res://scene/game_over.gd" id="1_rjyax"]
-[ext_resource type="FontFile" uid="uid://cc1j7bh6n0ryh" path="res://Asset/Sniglet.otf" id="2_iueif"]
 [ext_resource type="AudioStream" uid="uid://dttlbqj44es0f" path="res://Asset/Sound/cat-call-meow 2.mp3" id="3_tmrta"]
 [ext_resource type="AudioStream" uid="uid://baw8nbo5rlugi" path="res://Asset/Sound/cat-meow.mp3" id="4_mjbk8"]
 
@@ -12,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_3r20u")
 script = ExtResource("1_rjyax")
 
 [node name="Panel" type="Panel" parent="."]
@@ -35,7 +36,6 @@ offset_right = 286.5
 offset_bottom = 68.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_iueif")
 theme_override_font_sizes/font_size = 100
 text = "GAME OVER"
 
@@ -56,13 +56,11 @@ theme_override_constants/separation = 20
 
 [node name="Meow?" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_iueif")
 theme_override_font_sizes/font_size = 50
 text = "   Meow?   "
 
 [node name="Home" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_iueif")
 theme_override_font_sizes/font_size = 50
 text = "   Home   "
 
