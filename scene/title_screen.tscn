@@ -115,6 +115,7 @@ text = "Credit"
 [node name="Cat_SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_5omrp")
 pitch_scale = 1.01
+bus = &"SFX"
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Credit" to="." method="_on_credit_pressed"]

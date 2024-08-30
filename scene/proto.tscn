@@ -51,5 +51,5 @@ layout_mode = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_i6oqy")
-pitch_scale = 0.61
+pitch_scale = 0.71
 attenuation = 0.0490366

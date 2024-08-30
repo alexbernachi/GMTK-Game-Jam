@@ -67,10 +67,12 @@ text = "   Home   "
 [node name="MeowSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_tmrta")
 pitch_scale = 1.4
+bus = &"SFX"
 
 [node name="Sad_Meow" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_mjbk8")
 pitch_scale = 0.8
+bus = &"SFX"
 
 [connection signal="pressed" from="Panel/VBoxContainer/Meow?" to="." method="_on_meow_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Home" to="." method="_on_home_pressed"]
