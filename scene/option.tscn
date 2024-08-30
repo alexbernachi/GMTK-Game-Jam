@@ -67,10 +67,11 @@ size_flags_vertical = 4
 max_value = 3.0
 step = 0.001
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Return" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "return"
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/VolumeContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/VolumeContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/VolumeContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Return" to="." method="_on_return_pressed"]

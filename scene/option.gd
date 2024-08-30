@@ -19,11 +19,6 @@ func _ready():
 	MusicVol.value = db_to_linear(AudioServer.get_bus_volume_db(MusicBus))
 	SFXVol.value = db_to_linear(AudioServer.get_bus_volume_db(SFXBus))
 	
-	#put the value from Db to linear to the slider
-	MasterVol.value = db_to_linear(MasterBus)
-	MusicVol.value = db_to_linear(MusicBus)
-	SFXVol.value = db_to_linear(SFXBus)
-
 
 
 func _on_master_slider_value_changed(value):
@@ -36,4 +31,8 @@ func _on_music_slider_value_changed(value):
 
 func _on_sfx_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(SFXBus, linear_to_db(value))
+	pass # Replace with function body.
+
+func _on_return_pressed() -> void:
+	get_tree().change_scene_to_file("res://scene/title_screen.tscn")
 	pass # Replace with function body.
