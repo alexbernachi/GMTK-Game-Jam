@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://lflorxq7pyns"]
+[gd_scene load_steps=6 format=3 uid="uid://lflorxq7pyns"]
 
 [ext_resource type="Script" path="res://scene/proto.gd" id="1_8hhvu"]
 [ext_resource type="PackedScene" uid="uid://c1hpkvp1c7ap2" path="res://scene/player.tscn" id="2_0lkpj"]
 [ext_resource type="FontFile" uid="uid://cc1j7bh6n0ryh" path="res://Asset/Sniglet.otf" id="4_1qipr"]
 [ext_resource type="PackedScene" uid="uid://do5wrqquhuc62" path="res://bowl.tscn" id="4_jhg8i"]
-[ext_resource type="AudioStream" uid="uid://cwjco6b7n06v8" path="res://Asset/Sound/punch-3.mp3" id="5_i6oqy"]
 [ext_resource type="PackedScene" uid="uid://dl701op4pqihl" path="res://scene/game_over.tscn" id="6_58dhj"]
 
 [node name="Proto" type="Node2D"]
@@ -48,8 +47,3 @@ horizontal_alignment = 1
 [node name="Game Over" parent="Control" instance=ExtResource("6_58dhj")]
 visible = false
 layout_mode = 1
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_i6oqy")
-pitch_scale = 0.71
-attenuation = 0.0490366

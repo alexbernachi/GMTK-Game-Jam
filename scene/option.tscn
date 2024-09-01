@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7j1pc1wuq16x"]
+[gd_scene load_steps=4 format=3 uid="uid://b7j1pc1wuq16x"]
 
 [ext_resource type="Theme" uid="uid://dkkmstnd7ws1s" path="res://First Theme.tres" id="1_fll5r"]
 [ext_resource type="Script" path="res://scene/option.gd" id="2_xqgmm"]
+[ext_resource type="AudioStream" uid="uid://dttlbqj44es0f" path="res://Asset/Sound/cat-call-meow 2.mp3" id="3_0ml2t"]
 
 [node name="Option" type="Control"]
 clip_contents = true
@@ -29,49 +30,71 @@ theme_override_constants/margin_bottom = 60
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="VolumeContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="SplitContainer" type="SplitContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+split_offset = 900
+
+[node name="VolumeContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/SplitContainer"]
 layout_mode = 2
 
-[node name="MasterVoume" type="Label" parent="MarginContainer/VBoxContainer/VolumeContainer"]
+[node name="MasterVoume" type="Label" parent="MarginContainer/VBoxContainer/SplitContainer/VolumeContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Master Volume
 "
 
-[node name="MasterSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VolumeContainer"]
+[node name="MasterSlider" type="HSlider" parent="MarginContainer/VBoxContainer/SplitContainer/VolumeContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 max_value = 3.0
 step = 0.001
 
-[node name="MusicVolume" type="Label" parent="MarginContainer/VBoxContainer/VolumeContainer"]
+[node name="MusicVolume" type="Label" parent="MarginContainer/VBoxContainer/SplitContainer/VolumeContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Music Volume
 "
 
-[node name="MusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VolumeContainer"]
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer/SplitContainer/VolumeContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 max_value = 3.0
 step = 0.001
 
-[node name="SFXVolume" type="Label" parent="MarginContainer/VBoxContainer/VolumeContainer"]
+[node name="SFXVolume" type="Label" parent="MarginContainer/VBoxContainer/SplitContainer/VolumeContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "SFX Volume"
 
-[node name="SFXSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VolumeContainer"]
+[node name="SFXSlider" type="HSlider" parent="MarginContainer/VBoxContainer/SplitContainer/VolumeContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 max_value = 3.0
 step = 0.001
 
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/SplitContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 60
+
+[node name="TestSound" type="Button" parent="MarginContainer/VBoxContainer/SplitContainer/MarginContainer"]
+layout_mode = 2
+text = "Test
+Meow"
+
 [node name="Return" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 8
 text = "return"
 
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/VolumeContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/VolumeContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/VolumeContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[node name="CatMeowTest" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0ml2t")
+bus = &"SFX"
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/SplitContainer/VolumeContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/SplitContainer/VolumeContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/SplitContainer/VolumeContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SplitContainer/MarginContainer/TestSound" to="." method="_on_test_sound_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Return" to="." method="_on_return_pressed"]

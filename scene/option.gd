@@ -1,8 +1,9 @@
 extends Control
 
-@onready var MasterVol = $MarginContainer/VBoxContainer/VolumeContainer/MasterSlider
-@onready var MusicVol = $MarginContainer/VBoxContainer/VolumeContainer/MusicSlider
-@onready var SFXVol = $MarginContainer/VBoxContainer/VolumeContainer/SFXSlider
+@onready var MasterVol = $MarginContainer/VBoxContainer/SplitContainer/VolumeContainer/MasterSlider
+@onready var MusicVol = $MarginContainer/VBoxContainer/SplitContainer/VolumeContainer/MusicSlider
+@onready var SFXVol = $MarginContainer/VBoxContainer/SplitContainer/VolumeContainer/SFXSlider
+@onready var Test_sound = $CatMeowTest
 
 var MasterBus
 var MusicBus
@@ -35,4 +36,10 @@ func _on_sfx_slider_value_changed(value):
 
 func _on_return_pressed() -> void:
 	get_tree().change_scene_to_file("res://scene/title_screen.tscn")
+	pass # Replace with function body.
+
+
+func _on_test_sound_pressed() -> void:
+	Test_sound.pitch_scale = randf_range(0.8, 1.2)
+	Test_sound.play()
 	pass # Replace with function body.
