@@ -13,6 +13,7 @@ func _on_area_entered(area):
 	if area.name == "PointShape":
 		GameManager.emit_signal("Points", points)
 		Munch_SFX.pitch_scale = randf_range(0.80, 1.24)
+		
 		Munch_SFX.play()
 		area.queue_free()
 	if area.name == "DeadShape":

@@ -1,16 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjfntw51oa6tq"]
+[gd_scene load_steps=10 format=3 uid="uid://bjfntw51oa6tq"]
 
 [ext_resource type="Script" path="res://scene/scissor.gd" id="1_r3pml"]
 [ext_resource type="Texture2D" uid="uid://c5e5ui3ce6cmb" path="res://Asset/SVG/Cat Food 1.svg" id="2_6perw"]
 [ext_resource type="Texture2D" uid="uid://jr1adengeyk5" path="res://Asset/SVG/Cat Food 2.svg" id="3_y5l80"]
 [ext_resource type="Texture2D" uid="uid://1rarfdrq4d3h" path="res://Asset/SVG/Cat Food 3.svg" id="4_b4fje"]
 [ext_resource type="Texture2D" uid="uid://bubtc7d66toy0" path="res://Asset/SVG/Cat Food 4.svg" id="5_5ritl"]
+[ext_resource type="Texture2D" uid="uid://b4usxx3mywn4l" path="res://Asset/SVG/Crumbs.svg" id="6_kvabs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqukr"]
 size = Vector2(44, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_thtr1"]
 size = Vector2(20, 40)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oudnc"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [node name="Scissor" type="CharacterBody2D"]
 z_index = -1
@@ -58,5 +65,11 @@ collision_mask = 8
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PointShape"]
 shape = SubResource("RectangleShape2D_fqukr")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_oudnc")
+texture = ExtResource("6_kvabs")
+anim_offset_max = 1.0
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="PointShape" to="." method="_on_point_shape_area_entered"]

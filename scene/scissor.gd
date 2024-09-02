@@ -8,9 +8,6 @@ var Food_pick: int
 @onready var cat_food_3: Sprite2D = $CatFood3
 @onready var cat_food_4: Sprite2D = $CatFood4
 
-var FoodArray = [cat_food_1, cat_food_2, cat_food_3,cat_food_4]
-
-
 const SPEED = 300.0
 var Grab: bool = false
 
@@ -75,4 +72,10 @@ func _on_body_entered(body):
 
 func _on_area_2d_body_exited(_body: Node2D) -> void:
 	Grab = false
+	pass # Replace with function body.
+
+
+func _on_point_shape_area_entered(area: Area2D) -> void:
+	if area.name == "Bowl":
+		print("insert Crumbs")
 	pass # Replace with function body.
