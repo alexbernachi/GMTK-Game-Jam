@@ -14,7 +14,6 @@ z_index = -1
 rotation = 3.14159
 scale = Vector2(1.5, 1.5)
 collision_layer = 2
-collision_mask = 9
 script = ExtResource("1_cmki6")
 metadata/_edit_group_ = true
 
@@ -32,6 +31,14 @@ shape = SubResource("RectangleShape2D_thtr1")
 [node name="Lime" type="Sprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_bwx8o")
+
+[node name="DeadShape" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeadShape"]
+position = Vector2(0.333338, -2.33333)
+shape = SubResource("RectangleShape2D_fqukr")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

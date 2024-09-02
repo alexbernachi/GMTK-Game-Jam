@@ -16,5 +16,5 @@ func _on_home_pressed() -> void:
 	Sad_Meow.play()
 	await Sad_Meow.finished
 	Engine.time_scale = 1
-	get_tree().change_scene_to_file("res://scene/title_screen.tscn")
+	SceneTransition.change_scene("res://scene/title_screen.tscn")
 	pass # Replace with function body.

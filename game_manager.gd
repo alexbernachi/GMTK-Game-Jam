@@ -6,4 +6,4 @@ signal Points (Value)
 @warning_ignore("unused_signal")
 signal Lose()
 
-var Totals: float = 0
+var Totals: int = 0

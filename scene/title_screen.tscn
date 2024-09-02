@@ -22,9 +22,8 @@ position = Vector2(661, -160)
 metadata/_edit_group_ = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Particle Holder"]
-amount = 4
+amount = 6
 lifetime = 1.5
-randomness = 0.47
 fixed_fps = 60
 texture = ExtResource("1_axh4a")
 emission_shape = 3
@@ -33,7 +32,7 @@ angular_velocity_max = 289.45
 damping_max = 31.156
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="Particle Holder"]
-amount = 4
+amount = 6
 lifetime = 1.5
 fixed_fps = 60
 texture = ExtResource("2_esioi")
@@ -43,7 +42,7 @@ angular_velocity_max = 289.45
 damping_max = 31.156
 
 [node name="CPUParticles2D3" type="CPUParticles2D" parent="Particle Holder"]
-amount = 4
+amount = 6
 lifetime = 1.5
 fixed_fps = 60
 texture = ExtResource("3_m3bsq")
@@ -53,7 +52,7 @@ angular_velocity_max = 289.45
 damping_max = 31.156
 
 [node name="CPUParticles2D4" type="CPUParticles2D" parent="Particle Holder"]
-amount = 4
+amount = 6
 lifetime = 1.5
 fixed_fps = 60
 texture = ExtResource("4_swbbm")

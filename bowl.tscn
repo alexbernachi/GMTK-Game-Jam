@@ -9,7 +9,7 @@ size = Vector2(204, 102)
 
 [node name="Bowl" type="Area2D"]
 collision_layer = 8
-collision_mask = 2
+collision_mask = 50
 script = ExtResource("1_uou67")
 
 [node name="Food" type="CollisionShape2D" parent="."]
@@ -24,4 +24,5 @@ region_rect = Rect2(60.553, 227.232, 529.858, 209.366)
 stream = ExtResource("3_ww74u")
 pitch_scale = 1.24
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

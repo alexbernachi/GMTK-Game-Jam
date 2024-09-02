@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var Lime = $Lime
+
 var dir: float
 var Food_pick: int
 
@@ -19,13 +21,13 @@ func _physics_process(_delta):
 	if Grab:
 		velocity.x = 0
 	if dir == 1 and position.x > 1250:
-		print("poof")
 		queue_free()
 		pass
 	elif dir == -1 and position.x < 0:
-		print("poof but other side")
 		queue_free()
 		 
+	
+	Lime.rotation += dir * _delta
 	
 	move_and_slide()
 	
@@ -33,7 +35,6 @@ func _physics_process(_delta):
 @warning_ignore("unused_parameter")
 func _on_body_entered(body):
 	Grab = true
-	#get_tree().call_deferred("change_scene_to_file", "res://scene/proto.tscn")
 	pass # Replace with function body.
 
 

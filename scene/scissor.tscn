@@ -17,7 +17,6 @@ z_index = -1
 rotation = 3.14159
 scale = Vector2(1.5, 1.5)
 collision_layer = 2
-collision_mask = 9
 script = ExtResource("1_r3pml")
 metadata/_edit_group_ = true
 
@@ -51,6 +50,13 @@ texture = ExtResource("4_b4fje")
 visible = false
 scale = Vector2(0.305, 0.305)
 texture = ExtResource("5_5ritl")
+
+[node name="PointShape" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PointShape"]
+shape = SubResource("RectangleShape2D_fqukr")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
