@@ -35,7 +35,7 @@ func _on_sfx_slider_value_changed(value):
 	pass # Replace with function body.
 
 func _on_return_pressed() -> void:
-	SceneTransition.change_scene("res://scene/title_screen.tscn")
+	SceneTransition.change_scene("res://scene/title_screen.tscn", 2)
 	pass # Replace with function body.
 
 

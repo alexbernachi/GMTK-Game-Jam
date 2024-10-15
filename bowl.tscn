@@ -1,11 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://do5wrqquhuc62"]
+[gd_scene load_steps=7 format=3 uid="uid://do5wrqquhuc62"]
 
 [ext_resource type="Script" path="res://bowl.gd" id="1_uou67"]
 [ext_resource type="Texture2D" uid="uid://b6ss37nchtjfu" path="res://Asset/SVG/Bowl.svg" id="2_kj20d"]
 [ext_resource type="AudioStream" uid="uid://dxup2xojtwl2x" path="res://Asset/Sound/carrotnom.mp3" id="3_ww74u"]
+[ext_resource type="Texture2D" uid="uid://b4usxx3mywn4l" path="res://Asset/SVG/Crumbs.svg" id="4_hj68d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amwcj"]
 size = Vector2(204, 102)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_n6h6m"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [node name="Bowl" type="Area2D"]
 collision_layer = 8
@@ -23,6 +30,24 @@ region_rect = Rect2(60.553, 227.232, 529.858, 209.366)
 [node name="MunchSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_ww74u")
 pitch_scale = 1.24
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 2
+material = SubResource("CanvasItemMaterial_n6h6m")
+emitting = false
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+texture = ExtResource("4_hj68d")
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_max = 400.0
+angle_min = -593.4
+angle_max = 209.8
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+anim_offset_max = 1.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

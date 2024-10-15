@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsxlpnaj3146"]
+[gd_scene load_steps=5 format=3 uid="uid://bsxlpnaj3146"]
 
+[ext_resource type="Theme" uid="uid://dkkmstnd7ws1s" path="res://First Theme.tres" id="1_li1jh"]
 [ext_resource type="Script" path="res://control.gd" id="1_r8mun"]
 [ext_resource type="FontFile" uid="uid://cc1j7bh6n0ryh" path="res://Asset/Sniglet.otf" id="2_g0qqw"]
 [ext_resource type="Texture2D" uid="uid://chpiqmfu15ohh" path="res://Asset/PNG/gmtk2024-logo.png" id="3_o1lwt"]
@@ -11,18 +12,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_li1jh")
 script = ExtResource("1_r8mun")
 
-[node name="Label" type="Label" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -720.0
+offset_right = 1920.0
+offset_bottom = 333.0
+grow_vertical = 0
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("3_o1lwt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_g0qqw")
 theme_override_font_sizes/font_size = 30
-text = "Credit
+text = "
+Credit
 
 Developed by Galaxmii
 
@@ -39,36 +66,23 @@ HarumachiMusic
 Font:
 \"Sniglet\"
 The League of Moveable Type
-"
+
+Also, Special Thank for help:
+Joybotics
+Ahoyitme
+Adscomics"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -77.5
-offset_top = -71.855
-offset_right = 77.5
-offset_bottom = -12.855
-grow_horizontal = 2
-grow_vertical = 0
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 20
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_g0qqw")
 theme_override_font_sizes/font_size = 50
 text = "Home"
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -720.0
-offset_right = 1920.0
-offset_bottom = 333.0
-grow_vertical = 0
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("3_o1lwt")
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/Button" to="." method="_on_button_pressed"]

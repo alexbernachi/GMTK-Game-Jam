@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+
+
 var dir: float
 var Food_pick: int
 
@@ -11,15 +13,13 @@ var Food_pick: int
 const SPEED = 300.0
 var Grab: bool = false
 
-func _ready() -> void:
-	
+func _ready() -> void:	
 	randomize()
 	Food_pick= Food_Randomizer()
 	if position.x < 500:
 		dir = 1
 	if position.x > 500:
 		dir = -1
-	print(Food_pick)
 	
 
 func _physics_process(_delta):
@@ -77,5 +77,6 @@ func _on_area_2d_body_exited(_body: Node2D) -> void:
 
 func _on_point_shape_area_entered(area: Area2D) -> void:
 	if area.name == "Bowl":
-		print("insert Crumbs")
+		GameManager.Food.emit(Food_pick)
+		queue_free()
 	pass # Replace with function body.
