@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1hpkvp1c7ap2"]
+[gd_scene load_steps=6 format=3 uid="uid://c1hpkvp1c7ap2"]
 
 [ext_resource type="Script" path="res://scene/player.gd" id="1_270p3"]
 [ext_resource type="Texture2D" uid="uid://c815cm0lmy3s6" path="res://Asset/SVG/Kitty.svg" id="2_dl1jl"]
+[ext_resource type="AudioStream" uid="uid://cqbuc1mht21ny" path="res://Asset/Sound/onehmm-questionwav.wav" id="3_bgq6j"]
+[ext_resource type="AudioStream" uid="uid://tk3v1oyyb2j3" path="res://Asset/Sound/onehmm-question-Reverse.wav" id="4_gxevy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85vg7"]
 size = Vector2(329, 1050.25)
@@ -12,6 +14,8 @@ rotation = -3.14159
 collision_mask = 6
 script = ExtResource("1_270p3")
 speed = 25.0
+Max_time_duration = 0.2
+Min_time_duration = 0.6
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(0, -9.44941)
@@ -31,3 +35,11 @@ region_rect = Rect2(0, 328.37, 329, 349.63)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6.10352e-05, -25.375)
 shape = SubResource("RectangleShape2D_85vg7")
+
+[node name="StretchAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_bgq6j")
+pitch_scale = 1.24
+
+[node name="DeStretchAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gxevy")
+pitch_scale = 0.87

@@ -41,28 +41,30 @@ func _physics_process(_delta):
 func Food_Randomizer():
 	var Random_Spawner = randi_range(1, 4)
 	
-	if Random_Spawner == 1:
-		cat_food_1.visible = true
-	if Random_Spawner == 2:
-		cat_food_2.visible = true
-	if Random_Spawner == 3:
-		cat_food_3.visible = true
-	if Random_Spawner == 4:
-		cat_food_4.visible = true
+	match Random_Spawner:
+		1:
+			cat_food_1.visible = true
+		2:
+			cat_food_2.visible = true
+		3:
+			cat_food_3.visible = true
+		4:
+			cat_food_4.visible = true
 	
 	return Random_Spawner
 
 func FoodRotation(target: int, delta: float):
 	if !Grab:
-		if target == 1:
-			cat_food_1.rotation += dir * delta
-		if target == 2:
-			cat_food_2.rotation += dir * delta
-		if target == 3:
-			cat_food_3.rotation += dir * delta
-		if target == 4:
-			cat_food_4.rotation += dir * delta
-	pass
+		match target:
+			1:
+				cat_food_1.rotation += dir * delta
+			2:
+				cat_food_2.rotation += dir * delta
+			3:
+				cat_food_3.rotation += dir * delta
+			4:
+				cat_food_4.rotation += dir * delta
+
 
 @warning_ignore("unused_parameter")
 func _on_body_entered(body):

@@ -54,23 +54,31 @@ Credit
 Developed by Galaxmii
 
 Color Pallette: 
-Florentine24
+\"Florentine24\" - Haboo
+(Lospec.com)
 
 Sound Effect:
-Pixabay
+\"OneHmm-question.wav\" - esperar
+\"catmeow1\" - Yoyodaman234
+\"cat meow\" - tuberatanka
+\"carrotnom\" - j1987
+\"Cat Call (Meow)\" - Jofae
+(Pixabay.com)
 
 Music:
-\"ordinary (loop) -minimal piano\" 
-HarumachiMusic
+\"ordinary (loop) -minimal piano\" - HarumachiMusic
+(Pixabay.com)
 
 Font:
-\"Sniglet\"
-The League of Moveable Type
+\"Sniglet\" - The League of Moveable Type
+(Font-collector.com)
 
 Also, Special Thank for help:
 Joybotics
 Ahoyitme
-Adscomics"
+Adscomics
+
+"
 horizontal_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]

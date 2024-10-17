@@ -16,6 +16,7 @@ var Cucumber = preload("res://scene/cucumber.tscn")
 var TimerSec:float
 var Rate_Set: int
 
+@export var X_Pos_offset: float = 100
 var X_Pos: float
 var X_side: int
 
@@ -39,6 +40,7 @@ func _ready():
 	Score_Label.text = "Score: 0"
 	randomize()
 	
+	
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,7 +54,7 @@ func _process(_delta):
 			print("increase speed")
 			return
 	
-	
+	#If the timer is done, it choose a side first then spawn, which later wait until timer done
 	if Spawner_Timer.is_stopped():
 		Side_Spawner()
 		Spawner()
@@ -90,18 +92,20 @@ func Spawner():
 	pass
 	
 func Side_Spawner():
+	var screensize = get_viewport().get_visible_rect().size
 	#automatically flip screen
 	X_side = randi_range(0, 1)
 	
-	if X_side == 0:
-		X_Pos = 0
-	else:
-		X_Pos = 1250
-		
-	
-		
-	pass
-	
+	match X_side:
+		0:
+			X_Pos = (screensize.x - screensize.x) - X_Pos_offset
+			pass
+		1:
+			X_Pos = screensize.x + X_Pos_offset
+			pass
+		_:
+			push_warning("There no side to spawn")
+
 
 #Increase the rate of food when reach the total
 func Spawn_Rate_Manager(_rate: float):
