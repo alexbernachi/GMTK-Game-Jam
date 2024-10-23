@@ -23,6 +23,7 @@ var Base_Requirement: float = 3
 var Goal_Total: int = 2
 var InitalTimer: float
 var SuperLevel: int
+var GoalSuperLevel: int
 
 var X_Pos_offset: float = 100
 var X_Pos: float
@@ -39,7 +40,7 @@ func _ready():
 	GameManager.connect("Lose", Show_Game_Over)
 	
 	SuperLevel = 1
-	
+	GoalSuperLevel = 2
 	#TimerSec = Spawner_Timer.wait_time
 	Level = 1
 	Spawn_Rate_Manager(Level)
@@ -61,7 +62,7 @@ func _process(_delta):
 	if !Spawner_Timer.is_stopped():
 		if Goal_Total <= Totals:
 			Spawn_Rate_Manager(Level)
-			
+			SpeedandLimeManager(Level)
 			return
 	
 	#If the timer is done, it choose a side first then spawn, which later wait until timer done
@@ -127,11 +128,9 @@ func Side_Spawner():
 ##
 ##TODO increase the chance of lime
 func SpeedandLimeManager(_Level: int):
-	#var InitialSuperLevel: int
 	if _Level % 20 == 0:
 		SuperLevel += 1
-		
-		
+		print("you pass", SuperLevel)
 		
 		pass
 	pass
@@ -140,8 +139,13 @@ func SpeedandLimeManager(_Level: int):
 ## Increase the spawn rate of food when reach the total
 func Spawn_Rate_Manager(_rate: float):
 	const TimerDeduct: float = 0.055
-	if _rate >= 20:
-		_rate = 20
+	var SpawnRateLevel: int
+	
+	SpawnRateLevel = _rate
+	
+	if SpawnRateLevel >= 20:
+		SpawnRateLevel = 1
+		SuperLevel += 1
 		return
 	
 	if Goal_Total <= Totals:
