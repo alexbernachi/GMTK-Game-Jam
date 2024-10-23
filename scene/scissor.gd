@@ -1,37 +1,33 @@
 extends CharacterBody2D
 
-
-
 var dir: float
 var Food_pick: int
+var Grab: bool = false
+var offscreen_offset:= 100.0
 
 @onready var cat_food_1: Sprite2D = $CatFood1
 @onready var cat_food_2: Sprite2D = $CatFood2
 @onready var cat_food_3: Sprite2D = $CatFood3
 @onready var cat_food_4: Sprite2D = $CatFood4
 
-const SPEED = 300.0
-var Grab: bool = false
+@export var SPEED: float = 300.0
 
 func _ready() -> void:	
 	randomize()
 	Food_pick= Food_Randomizer()
+	## Move right
 	if position.x < 500:
 		dir = 1
+	## Move Left
 	if position.x > 500:
 		dir = -1
-	
 
 func _physics_process(_delta):
-	
 	velocity.x = SPEED * dir
 	if Grab:
 		velocity.x = 0
-	if dir == 1 and position.x > 1250:
-		queue_free()
-		pass
-	elif dir == -1 and position.x < 0:
-		queue_free()
+	
+	Offscreen_detection()
 	
 	FoodRotation(Food_pick, _delta)
 	
@@ -66,16 +62,21 @@ func FoodRotation(target: int, delta: float):
 				cat_food_4.rotation += dir * delta
 
 
+func Offscreen_detection():
+	var screensize = get_viewport().get_visible_rect().size
+	if dir == 1 and position.x > (screensize.x + offscreen_offset): ##delete on right screen
+		queue_free()
+	elif dir == -1 and position.x < ((screensize.x - screensize.x) - offscreen_offset):
+		queue_free()
+
 @warning_ignore("unused_parameter")
 func _on_body_entered(body):
 	Grab = true
 	pass # Replace with function body.
 
-
 func _on_area_2d_body_exited(_body: Node2D) -> void:
 	Grab = false
 	pass # Replace with function body.
-
 
 func _on_point_shape_area_entered(area: Area2D) -> void:
 	if area.name == "Bowl":

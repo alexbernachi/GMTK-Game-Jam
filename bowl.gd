@@ -25,14 +25,15 @@ func Foodmanager(Type):
 
 func _on_body_entered(body: Node2D) -> void:
 		body.queue_free()
+		
 
 func _on_area_entered(area):
 	if area.name == "PointShape":
 		GameManager.emit_signal("Points", points)
 		Munch_SFX.pitch_scale = randf_range(0.80, 1.24)
 		Munch_SFX.play()
-		print(area)
 		CPU_Particles_2d.emitting = true
+		area.queue_free()
 		
 	if area.name == "DeadShape":
 		GameManager.emit_signal("Lose")

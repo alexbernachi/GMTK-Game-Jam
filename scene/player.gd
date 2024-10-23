@@ -11,7 +11,7 @@ extends CharacterBody2D
 
 @export var speed: float
 
-#region for value of cat
+#region for value of cat stretching
 # Col_position mean the Y_axis collision position
 # Spr_position mean the Y_axis of Cat head position
 # Icon_Scale mean the the Scale of Y_axis of cat body to stretch
@@ -41,6 +41,7 @@ func _physics_process(_delta):
 	var tween = create_tween()
 	tween.set_parallel(true)
 	
+	## When the player press press and release the button
 	if Input.is_action_pressed("Increase"):
 		if Input.is_action_just_pressed("Increase"):
 			stretch_audio.playing = true
@@ -57,24 +58,6 @@ func _physics_process(_delta):
 		tween.tween_property(sprite_2d, "position:y", Min_Spr_position, Min_time_duration).set_ease(Tween.EASE_OUT)
 		tween.tween_property(icon, "scale:y", Min_Icon_Scale, Min_time_duration).set_ease(Tween.EASE_OUT)
 	
-	#if Input.is_action_pressed("Increase"):
-		#sprite_2d.position.y -= speed
-		#icon.scale.y += 0.2
-		#collision_shape_2d.position.y -= speed
-#
-	#if Input.is_action_pressed("Decrease") and icon.scale.y > 1:
-		##scale.y -= 0.2
-		#sprite_2d.position.y += speed
-		#icon.scale.y -= 0.2
-		#collision_shape_2d.position.y += speed
-		#if icon.scale.y < 1:
-			#icon.scale.y = 1
-	#
-	#if sprite_2d.position.y < Max_Spr_position:
-		#sprite_2d.position.y = Max_Spr_position
-		#collision_shape_2d.position.y = Max_Col_position
-		#icon.scale.y = Max_Icon_Scale
-		pass
 
 func Update_Lose():
 	Game_Over = true

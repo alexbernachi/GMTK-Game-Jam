@@ -21,6 +21,7 @@ Min_time_duration = 0.6
 position = Vector2(0, -9.44941)
 scale = Vector2(1, 1.142)
 texture = ExtResource("2_dl1jl")
+flip_h = true
 flip_v = true
 region_enabled = true
 region_rect = Rect2(0, 0, 329, 335.398)
@@ -28,6 +29,7 @@ region_rect = Rect2(0, 0, 329, 335.398)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-0.000574675, -374.5)
 texture = ExtResource("2_dl1jl")
+flip_h = true
 flip_v = true
 region_enabled = true
 region_rect = Rect2(0, 328.37, 329, 349.63)

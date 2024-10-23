@@ -43,11 +43,13 @@ _data = {
 
 [node name="Proto" type="Node2D"]
 script = ExtResource("1_8hhvu")
+TimerSec = 1.4
+Level = 1
 
 [node name="Player" parent="." instance=ExtResource("2_0lkpj")]
 position = Vector2(614.5, 4)
 scale = Vector2(0.54, 0.54)
-Min_time_duration = 0.3
+Min_time_duration = 0.2
 
 [node name="SpawnerTimer" type="Timer" parent="."]
 wait_time = 1.5
@@ -66,18 +68,28 @@ offset_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorRect" type="ColorRect" parent="Control"]
+z_index = -5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.498039, 0.827451, 0.901961, 1)
+
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -187.0
-offset_right = 187.0
+offset_left = -222.5
+offset_right = 222.5
 offset_bottom = 100.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("4_1qipr")
 theme_override_font_sizes/font_size = 100
-text = "Score: "
+text = "Munch: "
 horizontal_alignment = 1
 
 [node name="Game Over" parent="Control" instance=ExtResource("6_58dhj")]
@@ -86,16 +98,6 @@ visible = false
 layout_mode = 1
 offset_top = 720.0
 offset_bottom = 720.0
-
-[node name="ColorRect" type="ColorRect" parent="Control"]
-z_index = -10
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.498039, 0.827451, 0.901961, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

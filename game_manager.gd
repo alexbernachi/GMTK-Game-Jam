@@ -10,3 +10,8 @@ signal Lose()
 signal Food(Type)
 
 var Totals: int = 0
+
+var Foodspeed: float = 0.0
+
+func SpeedChange():
+	pass

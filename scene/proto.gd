@@ -7,21 +7,28 @@ var Cucumber = preload("res://scene/cucumber.tscn")
 
 @onready var Bowl: Area2D = $Bowl
 
-
 @onready var Score_Label = $Control/Label
 @onready var Spawner_Timer = $SpawnerTimer
 @onready var Animation_Player = $AnimationPlayer
+@onready var color_rect = $Control/ColorRect
 
+@export_range(0, 100) var Lime_chance: float
 
-var TimerSec:float
-var Rate_Set: int
+@export_subgroup("Leveling Sytem")
+@export var TimerSec:float
+@export var Level: int = 0
+@export var Exp_1: float = 1.3
+@export var Exp_2: float = 0.2
+var Base_Requirement: float = 3
+var Goal_Total: int = 2
+var InitalTimer: float
+var SuperLevel: int
 
-@export var X_Pos_offset: float = 100
+var X_Pos_offset: float = 100
 var X_Pos: float
 var X_side: int
 
 var Totals: int = 0
-var SpawnerRateGoalTotal = 15
 
 #get the game ready
 # Called when the node enters the scene tree for the first time.
@@ -31,27 +38,30 @@ func _ready():
 	GameManager.connect("Points", Update_Score)
 	GameManager.connect("Lose", Show_Game_Over)
 	
-	TimerSec = Spawner_Timer.wait_time
-	Rate_Set = 0
-	Spawn_Rate_Manager(Rate_Set)
+	SuperLevel = 1
+	
+	#TimerSec = Spawner_Timer.wait_time
+	Level = 1
+	Spawn_Rate_Manager(Level)
 	
 	Engine.time_scale = 1
 	X_side = 1
-	Score_Label.text = "Score: 0"
+	Score_Label.text = "Munch: 0"
 	randomize()
 	
+	InitalTimer = TimerSec
+	
+	print("Goal Total: ",Goal_Total, "\n Level: ", Level)
 	
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #when spawn, it choose which side and spawn them
 func _process(_delta):
-	if TimerSec >= 0.5:
-		if Totals >= SpawnerRateGoalTotal:
-			SpawnerRateGoalTotal += 5
-			Rate_Set += 1
-			Spawn_Rate_Manager(Rate_Set)
-			print("increase speed")
+	if !Spawner_Timer.is_stopped():
+		if Goal_Total <= Totals:
+			Spawn_Rate_Manager(Level)
+			
 			return
 	
 	#If the timer is done, it choose a side first then spawn, which later wait until timer done
@@ -71,10 +81,10 @@ func Show_Game_Over():
 #Update the Score on screen
 func Update_Score(new_value):
 	Totals += new_value
-	Score_Label.text = "Score: " + str(Totals)
+	Score_Label.text = "Munch: " + str(Totals)
 	pass
 
-#Spawn in some scissor
+#Spawn in some scissor or Cucumber
 func Spawner():
 	var Deadly_Rate = randi_range(1,4)
 	var Instant = Scissors.instantiate()
@@ -85,9 +95,14 @@ func Spawner():
 		add_child(Deadly_Instant)
 		pass
 	else:
+		## Spawn fron outside of the off the screen, and spawn from top to bottom random
 		Instant.position =  Vector2(X_Pos, randf_range(400, 500))
 		add_child(Instant)
+	
+	
+	
 	#Spawner_Timer.start(TimerSec)
+	## Start a timer with the range from the TimerSec
 	Spawner_Timer.start(randf_range(TimerSec, TimerSec+0.5))
 	pass
 	
@@ -97,19 +112,42 @@ func Side_Spawner():
 	X_side = randi_range(0, 1)
 	
 	match X_side:
+		## Choose the left side of the screen
 		0:
 			X_Pos = (screensize.x - screensize.x) - X_Pos_offset
 			pass
+		## Choose the right side of the screen
 		1:
 			X_Pos = screensize.x + X_Pos_offset
 			pass
 		_:
 			push_warning("There no side to spawn")
 
-
-#Increase the rate of food when reach the total
-func Spawn_Rate_Manager(_rate: float):
-	_rate = (_rate * 5)/1000
-	TimerSec = TimerSec + -(_rate)
-	print("Increase Speed:", TimerSec)
+##TODO: Increase speed of Food
+##
+##TODO increase the chance of lime
+func SpeedandLimeManager(_Level: int):
+	#var InitialSuperLevel: int
+	if _Level % 20 == 0:
+		SuperLevel += 1
+		
+		
+		
+		pass
 	pass
+
+
+## Increase the spawn rate of food when reach the total
+func Spawn_Rate_Manager(_rate: float):
+	const TimerDeduct: float = 0.055
+	if _rate >= 20:
+		_rate = 20
+		return
+	
+	if Goal_Total <= Totals:
+		Level += 1
+		
+		Goal_Total = roundi((Base_Requirement * (_rate ** Exp_1)) + (_rate** Exp_2))
+		TimerSec = InitalTimer - (Level * TimerDeduct)
+		print(" ------------------- \n", "Goal Total: ",Goal_Total, "\n Level: ", Level, "\n  Spawnrate: ", TimerSec)
+	
